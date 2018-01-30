@@ -21,20 +21,20 @@ input  : for path, dash-separated towns, eg "A-B-C"
         # in the form "AB5", to represent a track
         # connecting the first town ("A") to the second
         # ("B") with a distance of 5.
-        g = Graph()
+        graph = Graph()
         for string in (sys.argv[1].split(", ")):
-            g.add_track(string[0], string[1], int(string[2:]))
+            graph.add_track(string[0], string[1], int(string[2:]))
         if len(argv) > 2:
             # Determine which function to call based on "option"
             if argv[2] == "path":
                 path = argv[3].split("-")
-                print distance(path)
+                print distance(graph, path)
             elif argv[2] == "routes":
                 routes = argv[3].split("-")
-                print numRoutes(routes[0], routes[1], int(routes[2]))
+                print numRoutes(graph, routes[0], routes[1], int(routes[2]))
             elif argv[2] == "shortest":
                 points = argv[3].split("-")
-                print shortestRoute(points[0], points[1])
+                print shortestRoute(graph, points[0], points[1])
             else:
                 print help_text
         else:
@@ -42,19 +42,25 @@ input  : for path, dash-separated towns, eg "A-B-C"
 
 # Calculate the total distance of a path, or 
 # return 'NO SUCH ROUTE' if it doesn't exist
-def distance(path):
-    return path
+def distance(graph, path):
+    result = 0
+    for town in range(0, len(path) - 1):
+        try:
+            result += graph.tracks[path[town]][path[town+1]]
+        except KeyError as e: # Couldn't find a track in graph.tracks
+            return 'NO SUCH ROUTE'
+    return result
 
 # Find the number of routes that start at pointA
 # and finish at pointB with a maximum total 
 # distance of maxdistance.  PointA and PointB
 # can be the same point.
-def numRoutes(pointA, pointB, maxdistance):
+def numRoutes(graph, pointA, pointB, maxdistance):
     return pointA
 
 # Find the shortest route in the graph between
 # pointA and pointB
-def shortestRoute(pointA, pointB):
+def shortestRoute(graph, pointA, pointB):
     return pointA
 
 main(sys.argv)
