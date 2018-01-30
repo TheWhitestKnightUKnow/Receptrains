@@ -24,7 +24,7 @@ the same town.
 ### Output
 For test input 1 through 5, if no such route exists, output 'NO SUCH ROUTE'.  Otherwise, follow the route as given; do not make any extra stops!  For example, the first problem means to start at city A, then travel directly to city B (a distance of 5), then directly to city C (a distance of 4).
 
-Test Input:
+#### Test Input:
 
 For the test input, the towns are named using the first few letters of the
 alphabet from A to D.  A route between two towns (A to B) with a distance
@@ -47,13 +47,13 @@ to C (via D,C,D); and A to C (via D,E,B).
 
 ## Expected Output:
 
-Output #1: 9
-Output #2: 5
-Output #3: 13
-Output #4: 22
-Output #5: NO SUCH ROUTE
-Output #6: 2
-Output #7: 3
-Output #8: 9
-Output #9: 9
-Output #10: 7
+1. 9
+2. 5
+3. 13
+4. 22
+5. 'NO SUCH ROUTE'
+6. 2
+7. 3
+8. 9
+9. 9
+10. 7
