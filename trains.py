@@ -87,7 +87,6 @@ def routesExactly(graph, pointA, pointB, hops):
     queue.append([pointA])
     while len(queue) > 0:
         path = queue.popleft()
-        print graph.tracks[path[-1]]
         for neighbour in graph.tracks[path[-1]]:
             newPath = path + [neighbour]
             if neighbour == pointB and len(newPath) == hops + 1:
@@ -110,7 +109,7 @@ def routesMaxDistance(graph, pointA, pointB, maxdistance):
         for neighbour, distance in graph.tracks[path[-1]].iteritems():
             newPath = path + [neighbour]
             newDistance = currentDistance + distance
-            if neighbour == pointB and newDistance <= maxdistance:
+            if neighbour == pointB and newDistance < maxdistance:
                 routes.append( (newPath, newDistance) )
             if newDistance > maxdistance:
                 continue
@@ -136,16 +135,23 @@ def shortestRoute(graph, pointA, pointB):
                 unvisited[neighbour] = newDistance
             if neighbour == pointB:
                 return newDistance
-        # Move current from unvisited to visited
-        visited[current] = currentDistance
-        del unvisited[current]
+        # If this is the first time through the loop,
+        # we weight the first point's distance as +inf,
+        # so that future neighbours will re-weigh it
+        # if/when they get back to it.  This only matters
+        # for the case where pointA == pointB.
+        if currentDistance == 0: # First time through
+            visited[pointA] = None
+        else:
+            # Move current from unvisited to visited
+            visited[current] = currentDistance
+            del unvisited[current]
         candidates = [town for town in unvisited.iteritems() if town[1]] # If distance isn't +inf
         # If there are no candidates connected to the current node, break out
         if not candidates:
             break
         # sort by distance, move to the next (closest) neighbour
         current, currentDistance = sorted(candidates, key = lambda x: x[1])[0]
-
     return 'NO SUCH ROUTE'
 
 main(sys.argv)
