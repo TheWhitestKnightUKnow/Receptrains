@@ -10,7 +10,9 @@ def main(argv):
 graph  : a single string of comma-separated tracks.  eg "AB5, BC7, CA2"
 option : either "path", "routes", or "shortest"
 input  : for path, dash-separated towns, eg "A-B-C"
-         for routes, the two towns to find routes between, and a maximum distance, dash-separated, eg. "A-C-9"
+         for routesMax, the two towns to find routes between, and a maximum # of hops, dash-separated, eg. "C-C-3"
+         for routesExactly, the two towns to find routes between, and an exact # of hops, dash-separated, eg. "A-C-4"
+         for routesMaxDistance, the two towns to find routes between, and a maximum distance, dash-separated, eg. "A-D-20"
          for shortest, the two towns to find the shortest route between, dash-separated, eg. "C-B"
     """
     if len(argv) > 1:
