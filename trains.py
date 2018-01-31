@@ -63,13 +63,11 @@ def distance(graph, path):
 # intermediary towns equal to hops.  PointA and PointB
 # can be the same point.
 def routesMax(graph, pointA, pointB, hops):
-    print graph.tracks
     routes = []
     queue  = deque()
     queue.append([pointA])
     while len(queue) > 0:
         path = queue.popleft()
-        print path
         for neighbour in graph.tracks[path[-1]]:
             newPath = path + [neighbour]
             if neighbour == pointB:
@@ -79,11 +77,45 @@ def routesMax(graph, pointA, pointB, hops):
             queue.append(newPath)
     return len(routes)
 
+# Find the number of routes that start at pointA
+# and finish at pointB with exactly "hops"
+# many steps.  PointA and pointB can be the 
+# same point.
 def routesExactly(graph, pointA, pointB, hops):
-    pass
+    routes = []
+    queue  = deque()
+    queue.append([pointA])
+    while len(queue) > 0:
+        path = queue.popleft()
+        print graph.tracks[path[-1]]
+        for neighbour in graph.tracks[path[-1]]:
+            newPath = path + [neighbour]
+            if neighbour == pointB and len(newPath) == hops + 1:
+                routes.append(newPath)
+            if len(newPath) > hops:
+                continue
+            queue.append(newPath)
+    return len(routes)
 
+## Find the number of routes that start at pointA
+# and finish at pointB with a total maximum distance of 
+# maxdistance.  PointA and PointB
+# can be the same point.
 def routesMaxDistance(graph, pointA, pointB, maxdistance):
-    pass
+    routes = []
+    queue  = deque()
+    queue.append( ([pointA], 0) )
+    while len(queue) > 0:
+        (path, currentDistance) = queue.popleft()
+        for neighbour, distance in graph.tracks[path[-1]].iteritems():
+            newPath = path + [neighbour]
+            newDistance = currentDistance + distance
+            if neighbour == pointB and newDistance <= maxdistance:
+                routes.append( (newPath, newDistance) )
+            if newDistance > maxdistance:
+                continue
+            queue.append( (newPath, newDistance) )
+    return len(routes)
 
 # Find the shortest route in the graph between
 # pointA and pointB.  This is an adaptation of 
