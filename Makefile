@@ -22,5 +22,11 @@ routes:
 shortest:
 	python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "shortest" "A-C"
 
+shortest2:
+	python trains.py "AB5, BC5, CD5, DE5, EF5, FG5, EB3, XY7" "shortest" "A-X"
+
+shortest3:
+	python trains.py "AB5, DC5, CD5, DE5, EF5, FG5, EB3, GY7" "shortest" "C-Y"
+
 clean:
 	rm -f *.pyc

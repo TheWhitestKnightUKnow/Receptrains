@@ -59,8 +59,34 @@ def numRoutes(graph, pointA, pointB, maxdistance):
     return pointA
 
 # Find the shortest route in the graph between
-# pointA and pointB
+# pointA and pointB.  This is an adaptation of 
+# Dijkstra's shortest path algorithm.
 def shortestRoute(graph, pointA, pointB):
-    return pointA
+    unvisited = {node: None for node in graph.towns} # using None as +inf
+    visited = {}
+    current = pointA
+    currentDistance = 0
+    unvisited[current] = currentDistance
+    # Loop through until there are no unvisited towns
+    while True:
+        for neighbour, distance in graph.tracks[current].iteritems():
+            if neighbour not in unvisited:
+                continue
+            newDistance = currentDistance + distance
+            if unvisited[neighbour] is None or unvisited[neighbour] > newDistance:
+                unvisited[neighbour] = newDistance
+            if neighbour == pointB:
+                return newDistance
+        # Move current from unvisited to visited
+        visited[current] = currentDistance
+        del unvisited[current]
+        candidates = [town for town in unvisited.iteritems() if town[1]] # If distance isn't +inf
+        # If there are no candidates connected to the current node, break out
+        if not candidates:
+            break
+        # sort by distance, move to the next (closest) neighbour
+        current, currentDistance = sorted(candidates, key = lambda x: x[1])[0]
+
+    return 'NO SUCH ROUTE'
 
 main(sys.argv)
