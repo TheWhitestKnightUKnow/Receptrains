@@ -22,11 +22,11 @@ than once, and for a given route, the starting and ending town will not be
 the same town.
 
 #### Example Inputs
-- python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "path" "A-E-D"
-- python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "routesMax" "C-C-3"
-- python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "routesExactly" "A-C-4"
-- python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "shortest" "B-B"
-- python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "routesMaxDistance" "C-C-30"
+- `python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "path" "A-E-D"`
+- `python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "routesMax" "C-C-3"`
+- `python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "routesExactly" "A-C-4"`
+- `python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "shortest" "B-B"`
+- `python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "routesMaxDistance" "C-C-30"`
 
 
 ### Output
