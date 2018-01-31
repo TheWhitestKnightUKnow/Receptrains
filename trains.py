@@ -1,4 +1,5 @@
 import sys
+from collections import deque
 from graph import Graph
 
 # Entrypoint for the different solutions.
@@ -29,9 +30,15 @@ input  : for path, dash-separated towns, eg "A-B-C"
             if argv[2] == "path":
                 path = argv[3].split("-")
                 print distance(graph, path)
-            elif argv[2] == "routes":
+            elif argv[2] == "routesMax":
                 routes = argv[3].split("-")
-                print numRoutes(graph, routes[0], routes[1], int(routes[2]))
+                print routesMax(graph, routes[0], routes[1], int(routes[2]))
+            elif argv[2] == "routesExactly":
+                routes = argv[3].split("-")
+                print routesExactly(graph, routes[0], routes[1], int(routes[2]))
+            elif argv[2] == "routesMaxDistance":
+                routes = argv[3].split("-")
+                print routesMaxDistance(graph, routes[0], routes[1], int(routes[2]))
             elif argv[2] == "shortest":
                 points = argv[3].split("-")
                 print shortestRoute(graph, points[0], points[1])
@@ -52,11 +59,31 @@ def distance(graph, path):
     return result
 
 # Find the number of routes that start at pointA
-# and finish at pointB with a maximum total 
-# distance of maxdistance.  PointA and PointB
+# and finish at pointB with a maximum number of 
+# intermediary towns equal to hops.  PointA and PointB
 # can be the same point.
-def numRoutes(graph, pointA, pointB, maxdistance):
-    return pointA
+def routesMax(graph, pointA, pointB, hops):
+    print graph.tracks
+    routes = []
+    queue  = deque()
+    queue.append([pointA])
+    while len(queue) > 0:
+        path = queue.popleft()
+        print path
+        for neighbour in graph.tracks[path[-1]]:
+            newPath = path + [neighbour]
+            if neighbour == pointB:
+                routes.append(newPath)
+            if len(newPath) > hops:
+                continue
+            queue.append(newPath)
+    return len(routes)
+
+def routesExactly(graph, pointA, pointB, hops):
+    pass
+
+def routesMaxDistance(graph, pointA, pointB, maxdistance):
+    pass
 
 # Find the shortest route in the graph between
 # pointA and pointB.  This is an adaptation of 

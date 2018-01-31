@@ -1,32 +1,35 @@
 run:
 	python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7"
 
-pathABC:
+test1:
 	python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "path" "A-B-C"
 
-pathAD:
+test2:
 	python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "path" "A-D"
 
-pathADC:
+test3:
 	python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "path" "A-D-C"
 
-pathAEBCD:
+test4:
 	python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "path" "A-E-B-C-D"
 
-pathAED:
+test5:
 	python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "path" "A-E-D"
 
-routes:
-	python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "routes" "C-C-3"
+test6:
+	python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AX7" "routes" "C-X-3"
 
-shortest:
+test7:
+	python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "routes" "A-C-4"
+
+test8:
 	python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "shortest" "A-C"
 
-shortest2:
-	python trains.py "AB5, BC5, CD5, DE5, EF5, FG5, EB3, XY7" "shortest" "A-X"
+test9:
+	python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "shortest" "B-B"
 
-shortest3:
-	python trains.py "AB5, DC5, CD5, DE5, EF5, FG5, EB3, GY7" "shortest" "C-Y"
+test10:
+	python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "routes" "C-C-30"
 
 clean:
 	rm -f *.pyc
