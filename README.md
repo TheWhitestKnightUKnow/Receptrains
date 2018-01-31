@@ -21,6 +21,14 @@ the distance between the two towns.  A given route will never appear more
 than once, and for a given route, the starting and ending town will not be
 the same town.
 
+#### Example Inputs
+- python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "path" "A-E-D"
+- python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "routesMax" "C-C-3"
+- python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "routesExactly" "A-C-4"
+- python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "shortest" "B-B"
+- python trains.py "AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7" "routesMaxDistance" "C-C-30"
+
+
 ### Output
 For test input 1 through 5, if no such route exists, output 'NO SUCH ROUTE'.  Otherwise, follow the route as given; do not make any extra stops!  For example, the first problem means to start at city A, then travel directly to city B (a distance of 5), then directly to city C (a distance of 4).
 

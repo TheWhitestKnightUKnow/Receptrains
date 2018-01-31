@@ -156,4 +156,5 @@ def shortestRoute(graph, pointA, pointB):
         current, currentDistance = sorted(candidates, key = lambda x: x[1])[0]
     return 'NO SUCH ROUTE'
 
+# Entrypoint
 main(sys.argv)
